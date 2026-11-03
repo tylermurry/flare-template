@@ -14,7 +14,7 @@ function App() {
 	}
 
 	return (
-		<div className="flex min-h-svh flex-col items-center justify-center gap-4 p-8">
+		<div className="flex flex-1 flex-col items-center justify-center gap-4 p-8">
 			<div className="text-6xl font-bold tabular-nums" aria-live="polite">
 				{random ?? "–"}
 			</div>
