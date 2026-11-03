@@ -20,7 +20,10 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
-		"noUncheckedSideEffectImports": true
+		"noUncheckedSideEffectImports": true,
+
+		/* Path alias (shadcn) */
+		"paths": { "@/*": ["./src/react-app/*"] }
 	},
 	"include": ["src/react-app"]
 }

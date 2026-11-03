@@ -1,50 +1,44 @@
 // src/App.tsx
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import cloudflareLogo from "./assets/Cloudflare_Logo.svg";
 import honoLogo from "./assets/hono.svg";
-import "./App.css";
+
+const logos = [
+	{ href: "https://vite.dev", src: viteLogo, alt: "Vite logo" },
+	{ href: "https://react.dev", src: reactLogo, alt: "React logo" },
+	{ href: "https://hono.dev/", src: honoLogo, alt: "Hono logo" },
+	{ href: "https://workers.cloudflare.com/", src: cloudflareLogo, alt: "Cloudflare logo" },
+];
 
 function App() {
 	const [count, setCount] = useState(0);
 	const [name, setName] = useState("unknown");
 
 	return (
-		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-				<a href="https://hono.dev/" target="_blank">
-					<img src={honoLogo} className="logo cloudflare" alt="Hono logo" />
-				</a>
-				<a href="https://workers.cloudflare.com/" target="_blank">
-					<img
-						src={cloudflareLogo}
-						className="logo cloudflare"
-						alt="Cloudflare logo"
-					/>
-				</a>
+		<div className="mx-auto flex min-h-svh max-w-3xl flex-col items-center justify-center gap-8 p-8 text-center">
+			<div className="flex flex-wrap justify-center gap-6">
+				{logos.map((logo) => (
+					<a key={logo.href} href={logo.href} target="_blank">
+						<img src={logo.src} alt={logo.alt} className="size-16" />
+					</a>
+				))}
 			</div>
-			<h1>Vite + React + Hono + Cloudflare</h1>
-			<div className="card">
-				<button
-					onClick={() => setCount((count) => count + 1)}
-					aria-label="increment"
-				>
+			<h1 className="text-3xl font-bold">Vite + React + Hono + Cloudflare</h1>
+			<div className="flex flex-col items-center gap-2">
+				<Button onClick={() => setCount((count) => count + 1)} aria-label="increment">
 					count is {count}
-				</button>
-				<p>
+				</Button>
+				<p className="text-sm text-muted-foreground">
 					Edit <code>src/App.tsx</code> and save to test HMR
 				</p>
 			</div>
-			<div className="card">
-				<button
+			<div className="flex flex-col items-center gap-2">
+				<Button
+					variant="outline"
 					onClick={() => {
 						fetch("/api/")
 							.then((res) => res.json() as Promise<{ name: string }>)
@@ -53,13 +47,12 @@ function App() {
 					aria-label="get name"
 				>
 					Name from API is: {name}
-				</button>
-				<p>
+				</Button>
+				<p className="text-sm text-muted-foreground">
 					Edit <code>worker/index.ts</code> to change the name
 				</p>
 			</div>
-			<p className="read-the-docs">Click on the logos to learn more</p>
-		</>
+		</div>
 	);
 }
 
