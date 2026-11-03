@@ -1,6 +1,6 @@
 {
-  "name": "Flare",
-  "short_name": "Flare",
+  "name": "flare-template",
+  "short_name": "flare-template",
   "start_url": "/",
   "display": "standalone",
   "icons": [
